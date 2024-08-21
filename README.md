@@ -38,6 +38,8 @@
 
 ## Firing Alerts on Slack:
 ![Uploading image.png…]()
+![Uploading image.png…]()
+
 
 
 
