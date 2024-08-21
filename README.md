@@ -1,5 +1,165 @@
 # Day24
 
+# Prometheus and Alertmanager Setup
+
+## Prerequisites
+
+1. **Infrastructure**:
+   - Multiple nodes to monitor (e.g., web servers, databases).
+   - Access to these nodes for installation and configuration.
+
+2. **Tools**:
+   - **Prometheus**: Monitoring system and time-series database.
+   - **Node Exporter**: Exporter for system-level metrics.
+   - **MySQL Exporter**: Exporter for MySQL metrics (optional).
+   - **Alertmanager**: Handles alerts sent by Prometheus.
+   - **Consul** (Optional): Service discovery tool.
+   - **Kubernetes** (Optional): For dynamic service discovery.
+
+3. **Software**:
+   - `curl` or `wget`: For downloading packages.
+   - `tar`: For extracting downloaded files.
+   - `vim` or `nano`: For editing configuration files.
+
+4. **Networking**:
+   - Ensure network connectivity between Prometheus, nodes, and Alertmanager.
+   - Open necessary ports (e.g., 9090 for Prometheus, 9093 for Alertmanager).
+
+## Deployment Steps
+
+### 1. Configuring Jobs and Targets
+
+**Task**: Set up a Prometheus server to monitor multiple services.
+
+**Deliverables**:
+- Configure Prometheus with jobs for monitoring different services.
+- Define static and dynamic targets using file-based and service discovery methods.
+
+**Instructions**:
+1. **Install Prometheus**:
+   ```sh
+   wget https://github.com/prometheus/prometheus/releases/download/v2.42.0/prometheus-2.42.0.linux-amd64.tar.gz
+   tar xvf prometheus-2.42.0.linux-amd64.tar.gz
+   cd prometheus-2.42.0.linux-amd64
+   ```
+   
+2. **Configure prometheus.yml:**
+
+ - Refer to the repo.
+
+3. **Start Prometheus:**
+- ./prometheus --config.file=prometheus.yml
+
+### 2. Using Exporters (Node Exporter)
+Task: Use Node Exporter to monitor system-level metrics.
+
+Deliverables:
+
+Install and configure Node Exporter on all nodes.
+Ensure metrics are being scraped by Prometheus.
+Instructions:
+
+Install Node Exporter:
+```
+wget https://github.com/prometheus/node_exporter/releases/download/v1.6.1/node_exporter-1.6.1.linux-amd64.tar.gz
+tar xvf node_exporter-1.6.1.linux-amd64.tar.gz
+cd node_exporter-1.6.1.linux-amd64
+```
+Start Node Exporter:
+`./node_exporter`
+
+### 3. Hands-on Exercise: Setting Up Exporters
+Task: Configure Node Exporter and another exporter (e.g., MySQL Exporter).
+
+Deliverables:
+
+Demonstrate data collection from both exporters.
+Create a basic Prometheus dashboard.
+Instructions:
+
+Install MySQL Exporter (if using):
+```
+wget https://github.com/prometheus/mysqld_exporter/releases/download/v0.13.0/mysqld_exporter-0.13.0.linux-amd64.tar.gz
+tar xvf mysqld_exporter-0.13.0.linux-amd64.tar.gz
+cd mysqld_exporter-0.13.0.linux-amd64
+```
+
+Configure MySQL Exporter:
+```export DATA_SOURCE_NAME="user:password@tcp(mysqlserver:3306)/"
+./mysqld_exporter
+```
+Create a Basic Dashboard:
+
+Use Grafana or Prometheus’s built-in visualization tools.
+
+### 4. Introduction to PromQL
+Task: Learn and implement basic PromQL queries.
+
+Deliverables:
+
+Write queries for CPU usage, memory consumption, and disk I/O.
+Instructions:
+
+Access Prometheus Web UI:
+
+### Go to http://localhost:9090
+Example Queries:
+
+```Average CPU usage: avg(rate(node_cpu_seconds_total[5m])) by (instance)
+Memory consumption: node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes
+Disk I/O: rate(node_disk_io_time_seconds_total[5m])
+```
+
+### 5. Basic Queries (Selectors, Functions, Operators)
+Task: Create PromQL queries using selectors, functions, and operators.
+
+Deliverables:
+
+Write queries to calculate the 95th percentile of CPU usage.
+Use functions like rate(), increase(), and histogram_quantile().
+Instructions:
+
+Example Queries:
+```
+95th percentile of CPU usage: histogram_quantile(0.95, sum(rate(node_cpu_seconds_total[5m])) by (instance, le))
+Rate of increase: rate(node_network_receive_bytes_total[5m])
+```
+
+### 6. Advanced Queries and Aggregations
+Task: Perform advanced data aggregation using PromQL.
+
+Deliverables:
+
+Calculate total memory usage and maximum disk space usage.
+Instructions:
+
+Example Queries:
+```
+Total memory usage: sum(node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes)
+Maximum disk space usage: max(node_filesystem_size_bytes - node_filesystem_free_bytes)
+```
+### 7. Configuring Alertmanager
+Task: Set up Alertmanager to handle alerts.
+
+Deliverables:
+
+Configure Alertmanager with Prometheus.
+Create routing rules for alerts.
+Instructions:
+
+Install Alertmanager:
+```
+wget https://github.com/prometheus/alertmanager/releases/download/v0.25.0/alertmanager-0.25.0.linux-amd64.tar.gz
+tar xvf alertmanager-0.25.0.linux-amd64.tar.gz
+cd alertmanager-0.25.0.linux-amd64
+```
+
+Configure alertmanager.yml:
+- Refer the alertmanage.yml fromrepo.
+
+
+
+
 ![Screenshot from 2024-08-12 17-22-59](https://github.com/user-attachments/assets/508bdfd9-abea-4580-b72d-95a87d3049b4)
 
 ![image](https://github.com/user-attachments/assets/a9283256-f17a-4b3b-a710-1a74b8debd59)
