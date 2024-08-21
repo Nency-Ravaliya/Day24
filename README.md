@@ -34,7 +34,12 @@
 
 ![image](https://github.com/user-attachments/assets/0d3c6dd4-7d4f-4cb5-a28c-638771abb282)
 ![image](https://github.com/user-attachments/assets/92c03a7f-e4f6-4216-a2e1-db9d107155fd)
+![image](https://github.com/user-attachments/assets/9ea0cc9c-7911-462c-a3b3-e414002c0087)
+
+## Firing Alerts on Slack:
 ![Uploading image.png…]()
+
+
 
 
 
