@@ -1,0 +1,29 @@
+groups:
+  - name: example
+    rules:
+      - alert: HighCPUUsage
+        expr: avg(rate(node_cpu_seconds_total[5m])) by (instance) > 0.01
+        for: 5m
+        labels:
+          severity: 'critical'
+        annotations:
+          summary: 'High CPU usage detected on {{ $labels.instance }}'
+          description: 'CPU usage is above 90% for more than 5 minutes.'
+
+      - alert: HighMemoryUsage
+        expr: (node_memory_MemTotal_bytes - node_memory_MemFree_bytes - node_memory_Buffers_bytes - node_memory_Cached_bytes) / node_memory_MemTotal_bytes > 0.01
+        for: 5m
+        labels:
+          severity: 'critical'
+        annotations:
+          summary: 'High memory usage detected on {{ $labels.instance }}'
+          description: 'Memory usage is above 90% for more than 5 minutes.'
+
+      - alert: LowDiskSpace
+        expr: (node_filesystem_size_bytes - node_filesystem_free_bytes) / node_filesystem_size_bytes > 0.01
+        for: 5m
+        labels:
+          severity: 'critical'
+        annotations:
+          summary: 'Low disk space detected on {{ $labels.instance }}'
+          description: 'Disk space usage is above 90% for more than 5 minutes.'
