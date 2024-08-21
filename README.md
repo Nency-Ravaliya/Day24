@@ -27,6 +27,21 @@
 ![image](https://github.com/user-attachments/assets/511cd59c-7ce8-459e-aab1-f056cc0afaad)
 
 
+## Prometheus alert:
+
+![image](https://github.com/user-attachments/assets/59492525-1a5e-4d31-8da4-0ff495a25144)
+![image](https://github.com/user-attachments/assets/c3e77a3c-fff4-46f8-9036-156ac362f741)
+
+![image](https://github.com/user-attachments/assets/0d3c6dd4-7d4f-4cb5-a28c-638771abb282)
+![image](https://github.com/user-attachments/assets/92c03a7f-e4f6-4216-a2e1-db9d107155fd)
+![Uploading image.png…]()
+
+
+
+
+
+
+
 
 
 
