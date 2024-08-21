@@ -157,8 +157,7 @@ cd alertmanager-0.25.0.linux-amd64
 Configure alertmanager.yml:
 - Refer the alertmanage.yml fromrepo.
 
-
-
+## Output:
 
 ![Screenshot from 2024-08-12 17-22-59](https://github.com/user-attachments/assets/508bdfd9-abea-4580-b72d-95a87d3049b4)
 
