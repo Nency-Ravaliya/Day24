@@ -1,6 +1,4 @@
-# Day24
-
-# Prometheus and Alertmanager Setup
+# Prometheus and Alertmanager Setup to Slack and Email Notification
 
 ## Prerequisites
 
